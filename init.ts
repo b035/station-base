@@ -1,4 +1,4 @@
-import { Registry } from "@the-stations-project/sdk";
+import { log, Registry } from "@the-stations-project/sdk";
 import Fs from "fs/promises";
 
 export default async function init() {
@@ -11,11 +11,13 @@ export default async function init() {
 
 	//create registry directories
 	for (let dir of [
+		"logs",
 		"services",
-		"tmp",
 	]) {
 		let result = await Registry.mkdir(dir);
 		//panic if creation failed
 		if (result.code > 0) throw `failed to create registry directory "${dir}"`;
 	};
+
+	log("ACTIVITY", "initialized");
 }
