@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 
-import { Registry, RegistryExitCodes, log } from "@the-stations-project/sdk";
+import { Registry, log } from "@the-stations-project/sdk";
 
 import init from "./init.js";
 
@@ -10,10 +10,10 @@ async function main() {
 
 	//cleanup
 	await Registry.delete("tmp");
-	await Registry.mkdir("tmp");
 
 	//finalize
 	log("STATUS", "booted");
+	console.log("ready");
 }
 
 async function check_argument(arg: string, fn: () => void|Promise<void>) {

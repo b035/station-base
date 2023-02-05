@@ -22,10 +22,11 @@ export default async function init() {
 		"logs",
 		"services",
 	]) {
-		let result = await Registry.mkdir(dir);
+		const result = await Registry.mkdir(dir);
 		//panic if creation failed
 		if (result.code > 0) throw `failed to create registry directory "${dir}"`;
 	};
 
 	log("ACTIVITY", "initialized");
+	console.log("INITIALIZATION OK.");
 }
