@@ -2,12 +2,20 @@ import { log, Registry } from "@the-stations-project/sdk";
 import Fs from "fs/promises";
 
 export default async function init() {
+	console.warn("initializing. only do this the first time you boot the station.\nIF YOU ALREADY INITIALIZED, use 'npx boot' without the init flag.")
+
 	//create directories
 	for (let dir of [
 		"binaries",
 		"frontend",
 		"registry",
-	]) await Fs.mkdir(dir);
+	]) {
+		try {
+			await Fs.mkdir(dir)
+		} catch {
+			throw `failed to create directory "${dir}"`;
+		}
+	};
 
 	//create registry directories
 	for (let dir of [

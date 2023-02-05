@@ -1,6 +1,6 @@
 {
   "name": "@the-stations-project/base",
-  "version": "0.0.2-alpha2",
+  "version": "0.0.2-alpha3",
   "description": "Initializes the station.",
   "main": "index.js",
   "bin": {
