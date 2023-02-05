@@ -2,22 +2,25 @@
 
 import { Registry, log } from "@the-stations-project/sdk";
 
-import init from "./init.js";
+import run_startup_commands from "./startup_commands.js";
 
 async function main() {
-	//arguments
-	await check_argument("init", init);
+	//test
+	(await Registry.read("info/name"))
+		.err(() => {
+			console.error("please run 'npx init' first");
+			process.exit();
+		});
 
 	//cleanup
 	await Registry.delete("tmp");
 
 	//finalize
 	log("STATUS", "booted");
-	console.log("ready");
-}
+	console.log("booted");
 
-async function check_argument(arg: string, fn: () => void|Promise<void>) {
-	if (process.argv.indexOf(arg) != -1) await fn();
+	//startup commands
+	run_startup_commands();	
 }
 
 main();

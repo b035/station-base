@@ -1,10 +1,11 @@
 {
   "name": "@the-stations-project/base",
-  "version": "0.0.2-alpha4",
+  "version": "0.1.0-beta",
   "description": "Initializes the station.",
   "main": "index.js",
   "bin": {
-    "boot": "index.js"
+    "boot": "index.js",
+    "init": "init.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,6 +26,6 @@
   },
   "homepage": "https://github.com/b035/station-base#readme",
   "dependencies": {
-    "@the-stations-project/sdk": "^0.0.7-beta1"
+    "@the-stations-project/sdk": "^0.1.0-beta"
   }
 }

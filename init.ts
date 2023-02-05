@@ -1,9 +1,10 @@
-import { log, Registry } from "@the-stations-project/sdk";
+#! /usr/bin/env node
+
 import Fs from "fs/promises";
 
-export default async function init() {
-	console.warn("initializing. only do this the first time you boot the station.\nIF YOU ALREADY INITIALIZED, use 'npx boot' without the init flag.")
+import { Registry } from "@the-stations-project/sdk";
 
+async function init() {
 	//create directories
 	for (let dir of [
 		"binaries",
@@ -13,19 +14,35 @@ export default async function init() {
 		try {
 			await Fs.mkdir(dir)
 		} catch {
-			throw `failed to create directory "${dir}"`;
+			console.error(`failed to create directory "${dir}"`);
 		}
 	};
 
 	//create registry directories
 	for (let dir of [
+		"info",
 		"logs",
 		"services",
 	]) {
 		(await Registry.mkdir(dir))
-			.err(() => { throw `failed to create registry directory "${dir}"` });
+			.err(() => console.error(`failed to create registry directory "$({dir}"`));
 	};
 
-	log("ACTIVITY", "initialized");
-	console.log("INITIALIZATION OK.");
+	//create registry files
+	for (let [path, value] of [
+		["info/id", "untitled-station"],
+		["info/name", "Untitled Station"],
+		["info/greeting", "Welcome."]
+	]) {
+		await create_file(path, value);
+	}
+
+	console.log("INITIALIZATION OK. Run 'npx boot' to boot.");
+	process.exit();
 }
+
+async function create_file(path: string, value: string) {
+	(await Registry.read_or_create(path, value)).unwrap();
+}
+
+init();
