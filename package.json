@@ -1,0 +1,30 @@
+{
+  "name": "station-base",
+  "version": "0.0.1-alpha",
+  "description": "Initializes the station.",
+  "main": "index.js",
+  "bin": {
+    "boot": "index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/b035/station-base.git"
+  },
+  "keywords": [
+    "station",
+    "stations",
+    "project"
+  ],
+  "author": "b035",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/b035/station-base/issues"
+  },
+  "homepage": "https://github.com/b035/station-base#readme",
+  "dependencies": {
+    "@the-stations-project/sdk": "^0.0.5-beta"
+  }
+}
