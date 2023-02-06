@@ -18,7 +18,6 @@ export default async function run_startup_commands() {
 }
 
 async function parse_line(line: string) {
-
 	(await Shell.exec(line))
 		.ok((result) => {
 			const cp = result.value;
@@ -29,6 +28,6 @@ async function parse_line(line: string) {
 				console.log(data.toString());
 			});
 		})
-		.log_error(`Startup: failed to run "${line}"`);
+		.err(() => console.error(`Startup: failed to run "${line}".\nSee the logs for more details.\nError occured around ${new Date().toISOString()}.\n`));
 }
 

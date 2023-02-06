@@ -26,6 +26,6 @@
   },
   "homepage": "https://github.com/b035/station-base#readme",
   "dependencies": {
-    "@the-stations-project/sdk": "^0.1.0-beta"
+    "@the-stations-project/sdk": "^0.1.1-beta"
   }
 }
