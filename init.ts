@@ -32,7 +32,10 @@ async function init() {
 	for (let [path, value] of [
 		["info/id", "untitled-station"],
 		["info/name", "Untitled Station"],
-		["info/greeting", "Welcome."]
+		["info/greeting", "Welcome."],
+
+		["services/npx", "npx"],
+		["services/npm", "npm"],
 	]) {
 		await create_file(path, value);
 	}
