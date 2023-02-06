@@ -27,6 +27,9 @@ async function parse_line(line: string) {
 			cp?.stdout?.on("data", (data) => {
 				console.log(data.toString());
 			});
+			cp?.stderr?.on("data", (data) => {
+				console.error(`Startup: error output from "${line}": ${data.toString()}\n`);
+			});
 		})
 		.err(() => console.error(`Startup: failed to run "${line}".\nSee the logs for more details.\nError occured around ${new Date().toISOString()}.\n`));
 }
