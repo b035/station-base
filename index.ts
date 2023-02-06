@@ -15,6 +15,11 @@ async function main() {
 	//cleanup
 	await Registry.delete("tmp");
 
+	//logs
+	const timestamp = new Date().toISOString();
+	(await Registry.move("logs/current", `logs/before-${timestamp}`));
+	(await Registry.mkdir("logs/current")).unwrap();
+
 	//finalize
 	log("STATUS", "booted");
 	console.log("booted");

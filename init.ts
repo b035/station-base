@@ -21,7 +21,6 @@ async function init() {
 	//create registry directories
 	for (let dir of [
 		"info",
-		"logs",
 		"services",
 	]) {
 		(await Registry.mkdir(dir))
@@ -30,6 +29,8 @@ async function init() {
 
 	//create registry files
 	for (let [path, value] of [
+		["startup_commands", ""],
+
 		["info/id", "untitled-station"],
 		["info/name", "Untitled Station"],
 		["info/greeting", "Welcome."],
