@@ -5,7 +5,7 @@ const DEFAULT = "";
 
 export default async function run_startup_commands() {
 	//get file
-	const text = (await Registry.read_or_create(FILE_PATH, DEFAULT)).unwrap().value!;
+	const text = (await Registry.read_or_create(FILE_PATH, DEFAULT)).or_panic().value!;
 
 	//parse files
 	const lines = text

@@ -1,6 +1,6 @@
 {
   "name": "@the-stations-project/base",
-  "version": "0.1.0-beta3",
+  "version": "0.1.0-beta4",
   "description": "Initializes the station.",
   "main": "index.js",
   "bin": {
@@ -26,6 +26,6 @@
   },
   "homepage": "https://github.com/b035/station-base#readme",
   "dependencies": {
-    "@the-stations-project/sdk": "^0.1.5-beta"
+    "@the-stations-project/sdk": "^0.1.10-beta"
   }
 }

@@ -46,7 +46,7 @@ async function init() {
 }
 
 async function create_file(path: string, value: string) {
-	(await Registry.read_or_create(path, value)).unwrap();
+	(await Registry.read_or_create(path, value)).or_panic();
 }
 
 init();
