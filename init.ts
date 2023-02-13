@@ -8,7 +8,6 @@ async function init() {
 	//create directories
 	for (let dir of [
 		"binaries",
-		"frontend",
 		"registry",
 	]) {
 		try {
