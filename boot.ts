@@ -22,7 +22,9 @@ async function main() {
 	//read file
 	const text = (await SDK.Registry.read("startup_commands")).or_panic().value!;
 	//parse
-	const commands = text.split("\n");
+	const commands = text
+		.split("\n")
+		.filter(x => x) //remove empty lines;
 	//execute commands
 	for (let command of commands) {
 		(await SDK.Shell.exec(command))

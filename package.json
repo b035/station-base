@@ -4,7 +4,7 @@
   "description": "Initializes the station.",
   "main": "index.js",
   "bin": {
-    "boot": "index.js",
+    "boot": "boot.js",
     "init": "init.js"
   },
   "scripts": {
