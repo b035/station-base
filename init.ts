@@ -5,13 +5,20 @@ import Fs from "fs/promises";
 import * as SDK from "@the-stations-project/sdk";
 
 async function init() {
+	const result = new SDK.Result<SDK.ExitCodes, undefined>(SDK.ExitCodes.Ok, undefined);
+
+	function handle_err(msg: string) {
+		result.code = SDK.ExitCodes.ErrUnknown;
+		console.error(msg);
+	}
+
 	//create directories
 	for (let path of [
 		"executables",
 		"registry",
 	]) {
 		await Fs.mkdir(path)
-			.catch(() => console.log(`failed to create directory "${path}".`));
+			.catch(() => handle_err(`failed to create directory "${path}".`));
 	}
 
 	//initialize registry
@@ -22,7 +29,7 @@ async function init() {
 		"station_info/greetings",
 	]) {
 		(await SDK.Registry.mkdir(path))
-			.err(() => console.log(`failed to create registry directory "${path}".`));
+			.err(() => handle_err(`failed to create registry directory "${path}".`));
 	}
 	for (let [path, content] of [
 		["startup_commands", ""],
@@ -33,8 +40,10 @@ async function init() {
 		["station_info/greetings/en", "Welcome"],
 	]) {
 		(await SDK.Registry.write(path, content))
-			.err(() => console.log(`failed to write registry file "${path}".`));
+			.err(() => handle_err(`failed to write registry file "${path}".`));
 	}
+
+	return result;
 }
 
-init();
+SDK.start_service(init, (result) => console.log(result.to_string()));
