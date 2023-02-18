@@ -12,7 +12,7 @@ async function init() {
 		console.error(msg);
 	}
 
-	//create directories
+	/* create directories */
 	for (let path of [
 		"executables",
 		"registry",
@@ -21,7 +21,7 @@ async function init() {
 			.catch(() => handle_err(`failed to create directory "${path}".`));
 	}
 
-	//initialize registry
+	/* initialize registry */
 	for (let path of [
 		"logs",
 

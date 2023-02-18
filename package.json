@@ -2,7 +2,7 @@
   "name": "@the-stations-project/base",
   "version": "0.2.0-beta3",
   "description": "Initializes the station.",
-  "main": "index.js",
+  "main": "boot.js",
   "bin": {
     "boot": "boot.js",
     "init": "init.js"
