@@ -18,6 +18,18 @@ async function main() {
 	/* reset memory */
 	(await SDK.Memory.init());
 
+	/* startup commands */
+	//read file
+	const text = (await SDK.Registry.read("startup_commands")).or_panic().value!;
+	//parse
+	const commands = text.split("\n");
+	//execute commands
+	for (let command of commands) {
+		(await SDK.Shell.exec(command))
+			.or_log_error()
+			.err(() => result.code = SDK.ExitCodes.ErrUnknown);
+	}
+
 	return result;
 }
 
