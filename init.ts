@@ -5,7 +5,7 @@ import Fs from "fs/promises";
 import * as SDK from "@the-stations-project/sdk";
 
 async function init() {
-	const result = new SDK.Result<SDK.ExitCodes, undefined>(SDK.ExitCodes.Ok, undefined);
+	const result = new SDK.Result(SDK.ExitCodes.Ok, undefined);
 
 	function handle_err(msg: string) {
 		result.code = SDK.ExitCodes.ErrUnknown;
