@@ -23,6 +23,8 @@ async function init() {
 
 	//initialize registry
 	for (let path of [
+		"logs",
+
 		"module_names",
 
 		"station_info",
