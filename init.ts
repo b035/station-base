@@ -25,7 +25,7 @@ async function init() {
 	for (let path of [
 		"logs",
 
-		"module_names",
+		"services",
 
 		"station_info",
 		"station_info/greetings",
