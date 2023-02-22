@@ -25,7 +25,7 @@ async function init() {
 	for (let path of [
 		"logs",
 
-		"services",
+		"modules",
 
 		"station_info",
 		"station_info/greetings",
@@ -40,6 +40,12 @@ async function init() {
 		["station_info/name", "My Station"],
 		["station_info/languages", "en"],
 		["station_info/greetings/en", "Welcome"],
+
+		["modules/users", "npx users"],
+		["modules/groups", "npx groups"],
+		["modules/actions", "npx actions"],
+		["modules/station-management", "npx station-management"],
+		["modules/bridge", "npx bridge"],
 	]) {
 		(await SDK.Registry.write(path, content))
 			.err(() => handle_err(`failed to write registry file "${path}".`));
